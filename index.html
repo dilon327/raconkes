@@ -5,39 +5,178 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Günlük Racon Dozunuz</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
         body {
             margin: 0;
             padding: 0;
-            background-color: gray;
-            color: orange;
-            font-family: Arial, sans-serif;
+            background: #000000;
+            color: #FFFFFF;
+            font-family: 'Roboto', sans-serif;
+            min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
         }
+
+        .container {
+            width: 100%;
+            max-width: 800px;
+            padding: 2rem;
+        }
+
+        .content, .subtitle-box {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+        }
+
         .content {
-            text-align: center;
-            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+            margin-bottom: 20px;
         }
+
+        .captain-shield {
+            width: 180px;
+            height: 180px;
+            filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.3));
+            transition: transform 0.3s ease;
+        }
+
+        .captain-shield:hover {
+            transform: scale(1.05);
+        }
+
         iframe {
-            width: 560px;
-            height: 315px;
-            position: relative;
-            opacity: 1; /* Videoyu görünür yapar */
-            pointer-events: auto; /* Kullanıcı etkileşimini sağlar */
+            width: 100%;
+            max-width: 660px;
+            height: 370px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
         }
+
         .video-title {
+            margin: 0;
+            font-size: 28px;
+            font-weight: 700;
+            text-align: center;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            letter-spacing: 1px;
             position: relative;
-            z-index: 2;
-            margin-top: 20px;
+            padding-bottom: 15px;
+        }
+
+        .video-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #FFFFFF, transparent);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+            
+            .content {
+                padding: 1rem;
+            }
+
+            .captain-shield {
+                width: 140px;
+                height: 140px;
+            }
+
+            .video-title {
+                font-size: 22px;
+            }
+
+            iframe {
+                height: 300px;
+            }
+        }
+
+        .side-image {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 50vw;
+            height: 100vh;
+            object-fit: contain;
+            background-color: #000000;
+            border-radius: 0 10px 10px 0;
+            box-shadow: 5px 0 15px rgba(0, 0, 0, 0.4);
+            opacity: 0.9;
+            transition: opacity 0.3s ease;
+            display: none;
+            padding: 20px;
+        }
+
+        @media (min-width: 1200px) {
+            .side-image {
+                display: block;
+            }
+            
+            .container {
+                margin-left: 50vw;
+            }
+        }
+
+        .subtitle-box {
+            padding: 15px 30px;
+        }
+
+        .subtitle {
+            color: #FFFFFF;
+            font-size: 20px;
+            font-weight: 500;
+            margin: 0;
+            text-shadow: none;
+            position: relative;
+            padding-bottom: 15px;
+            text-decoration: none;
+        }
+
+        .subtitle a {
+            color: #FFFFFF;
+            text-decoration: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .subtitle a:hover {
+            opacity: 0.8;
+        }
+
+        .subtitle::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #FFFFFF, transparent);
         }
     </style>
 </head>
 <body>
-    <div class="content">
-        <iframe id="dailymotion-player" src="https://www.dailymotion.com/embed/video/x99srl0" frameborder="0" allow="autoplay" allowfullscreen></iframe>
-        <h1 class="video-title">Demirden korksak trene binmezdik</h1>
+    <img src="https://image.milimaj.com/i/milliyet/75/0x0/602527de5542811458ea52f7.jpg" alt="Ramiz Dayı" class="side-image">
+    <div class="container">
+        <div class="content">
+            <h1 class="video-title">Demirden korksak trene binmezdik</h1>
+        </div>
+        <div class="subtitle-box">
+            <p class="subtitle">Racon FM'den günün önerisi: <a href="https://www.youtube.com/watch?v=9Tcy_V8jjf8&t=313s" target="_blank">Tıkla İzle</a></p>
+        </div>
     </div>
 </body>
 </html>
