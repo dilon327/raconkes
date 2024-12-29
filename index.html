@@ -77,7 +77,6 @@
             transition: all 1s ease;
             display: none;
             padding: 0;
-            transform: translateX(0);
         }
 
         .slide-out {
@@ -189,6 +188,29 @@
         .play-button:hover, .control-button:hover {
             background: rgba(255, 255, 255, 0.2);
         }
+
+        .contact-info {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
+            color: #FFFFFF;
+            backdrop-filter: blur(10px);
+            font-size: 10.5px;
+            z-index: 1000;
+        }
+
+        .contact-info a {
+            color: #FFFFFF;
+            text-decoration: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .contact-info a:hover {
+            opacity: 0.8;
+        }
     </style>
 </head>
 <body>
@@ -211,6 +233,9 @@
         <div class="subtitle-box">
             <p class="subtitle">Günün Önerisi: <a href="https://www.imdb.com/title/tt0149601/" target="_blank">Ağır Roman</a></p>
         </div>
+    </div>
+    <div class="contact-info">
+        İletişim: <a href="mailto:raconkardesligi@gmail.com">raconkardesligi@gmail.com</a>
     </div>
     <script>
         const audio = document.querySelector('.hidden-player');
@@ -273,28 +298,28 @@
         const sideImage = document.querySelector('.side-image');
 
         function changeImage() {
-            // Önce mevcut resmi dışarı kaydır
-            sideImage.classList.add('slide-out');
+            // Önce mevcut resmi soldur
+            sideImage.classList.add('fade-out');
             
-            // 1 saniye sonra yeni resmi yükle ve içeri kaydır
+            // 1 saniye sonra yeni resmi yükle ve belirginleştir
             setTimeout(() => {
                 currentImage = (currentImage + 1) % images.length;
                 sideImage.src = images[currentImage];
                 
                 // Yeni resmin yüklenmesini bekle
                 sideImage.onload = () => {
-                    sideImage.classList.remove('slide-out');
-                    sideImage.classList.add('slide-in');
+                    sideImage.classList.remove('fade-out');
+                    sideImage.classList.add('fade-in');
                     
                     setTimeout(() => {
-                        sideImage.classList.remove('slide-in');
+                        sideImage.classList.remove('fade-in');
                     }, 1000);
                 };
             }, 1000);
         }
 
-        // Her 10 saniyede bir resmi değiştir
-        setInterval(changeImage, 10000);
+        // Her 7 saniyede bir resmi değiştir
+        setInterval(changeImage, 7000);
     </script>
 </body>
 </html>
