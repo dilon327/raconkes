@@ -132,9 +132,41 @@
         .subtitle a:hover {
             opacity: 0.8;
         }
+
+        .hidden-player {
+            display: none; /* Müzik çaları gizle */
+        }
+
+        .play-button {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            border-radius: 5px;
+            color: #b3951d;
+            cursor: pointer;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            transition: background 0.3s ease;
+            font-style: italic;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .play-button:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
     </style>
 </head>
 <body>
+    <audio class="hidden-player" loop>
+        <source src="./agirroman.mp3" type="audio/mpeg">
+    </audio>
+    <button class="play-button" onclick="document.querySelector('.hidden-player').play()">
+        Racon FM 🔉
+    </button>
     <img src="agirroman.jpg" alt="Ağır Roman" class="side-image">
     <div class="container">
         <div class="content">
@@ -145,8 +177,14 @@
             Şimdilik ölümüne kadar hayattasın.</h1>
         </div>
         <div class="subtitle-box">
-            <p class="subtitle">Racon FM'den günün önerisi: <a href="https://www.youtube.com/watch?v=Ci1YaPE3AQk&t=112s" target="_blank">Ağır Roman</a></p>
+            <p class="subtitle">Günün Önerisi: <a href="https://www.imdb.com/title/tt0149601/" target="_blank">Ağır Roman</a></p>
         </div>
     </div>
+    <script>
+        document.addEventListener('click', function() {
+            var audio = document.querySelector('.hidden-player');
+            audio.play();
+        }, { once: true });
+    </script>
 </body>
 </html>
