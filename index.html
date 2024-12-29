@@ -173,7 +173,7 @@
     </style>
 </head>
 <body>
-    <audio class="hidden-player" loop>
+    <audio class="hidden-player" onended="playNext()">
         <source src="./agirroman.mp3" type="audio/mpeg">
     </audio>
     <div class="audio-controls">
@@ -196,10 +196,43 @@
     <script>
         const audio = document.querySelector('.hidden-player');
         const playButton = document.querySelector('.control-button');
+        
+        const playlist = [
+            './agirroman.mp3',
+            './aglasevdam.mp3',
+            './kolera.mp3'
+        ];
+        
+        let currentTrack = 0;
+        let isFirstRound = true;
+
+        function playNext() {
+            currentTrack = (currentTrack + 1) % playlist.length;
+            
+            if (currentTrack === 0) {
+                isFirstRound = false;
+            }
+
+            audio.src = playlist[currentTrack];
+            audio.play();
+            
+            if (isFirstRound) {
+                setTimeout(() => {
+                    playNext();
+                }, 30000); // 10000'den 30000'e değiştirildi (30 saniye)
+            }
+            
+            playButton.textContent = '||';
+        }
 
         function togglePlay() {
             if (audio.paused) {
                 audio.play();
+                if (isFirstRound) {
+                    setTimeout(() => {
+                        playNext();
+                    }, 30000); // 10000'den 30000'e değiştirildi (30 saniye)
+                }
                 playButton.textContent = '||';
             } else {
                 audio.pause();
