@@ -165,27 +165,38 @@
             z-index: 1000;
         }
 
-        .play-button, .control-button {
+        .play-button {
             padding: 10px 20px;
             background: rgba(255, 255, 255, 0.1);
             border: none;
             border-radius: 5px;
             color: #b3951d;
-            cursor: pointer;
             backdrop-filter: blur(10px);
             transition: background 0.3s ease;
             font-style: italic;
-            font-size: 24px;
+            font-size: 20px;
             font-weight: bold;
+            cursor: default;
+            user-select: none;
         }
 
         .control-button {
             padding: 10px 15px;
             font-size: 20px;
             color: #b3951d;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            border-radius: 5px;
+            backdrop-filter: blur(10px);
+            transition: background 0.3s ease;
+            cursor: pointer;
+            text-decoration: none;
         }
 
-        .play-button:hover, .control-button:hover {
+        .control-button:hover {
             background: rgba(255, 255, 255, 0.2);
         }
 
@@ -297,6 +308,10 @@
         .menu-items a:hover {
             background: rgba(255, 255, 255, 0.2);
         }
+
+        .control-button.list-link {
+            font-size: 10px; /* 12px'den 10px'e düşürdük */
+        }
     </style>
 </head>
 <body>
@@ -304,8 +319,8 @@
         <source src="./agirroman.mp3" type="audio/mpeg">
     </audio>
     <div class="audio-controls">
-        <div class="play-button">Racon FM 🔉</div>
-        <button class="control-button" onclick="togglePlay()">►</button>
+        <button class="control-button" onclick="togglePlay()">Racon FM 🔉 | Günün Listesi ►</button>
+        <a href="https://www.youtube.com/playlist?list=PLYyM5bxy4waUPTDG_szx6On6t97bwYos8" target="_blank" class="control-button list-link">Tamamı için</a>
     </div>
     <img src="agirroman.jpg" alt="Ağır Roman" class="side-image">
     <div class="container">
@@ -340,7 +355,11 @@
         const playlist = [
             './agirroman.mp3',
             './aglasevdam.mp3',
-            './kolera.mp3'
+            './kolera.mp3',
+            './pumazehra.mp3',
+            './resimdekigozyaslari.mp3',
+            './sabah.mp3',
+            './tilkiorhan.mp3',
         ];
         
         let currentTrack = 0;
@@ -359,10 +378,10 @@
             if (isFirstRound) {
                 setTimeout(() => {
                     playNext();
-                }, 30000); // 10000'den 30000'e değiştirildi (30 saniye)
+                }, 18000);
             }
             
-            playButton.textContent = '||';
+            playButton.textContent = 'Racon FM 🔉 | Günün Listesi ||';
         }
 
         function togglePlay() {
@@ -371,12 +390,12 @@
                 if (isFirstRound) {
                     setTimeout(() => {
                         playNext();
-                    }, 30000); // 10000'den 30000'e değiştirildi (30 saniye)
+                    }, 18000);
                 }
-                playButton.textContent = '||';
+                playButton.textContent = 'Racon FM 🔉 | Günün Listesi ||';
             } else {
                 audio.pause();
-                playButton.textContent = '▶';
+                playButton.textContent = 'Racon FM 🔉 | Günün Listesi ►';
             }
         }
 
