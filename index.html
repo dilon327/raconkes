@@ -26,16 +26,30 @@
         }
 
         @media (max-width: 768px) {
-            .container {
-                padding: 1rem;
-            }
-            
-            .content {
-                padding: 1rem;
+            body {
+                background: url('agirroman.jpg') no-repeat center center fixed;
+                background-size: cover;
+                position: relative;
             }
 
-            .video-title {
-                font-size: 16px;
+            body::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: rgba(0, 0, 0, 0.7); /* Resmin üzerine yarı saydam siyah katman */
+                z-index: 1;
+            }
+
+            .container {
+                position: relative;
+                z-index: 2; /* İçeriği arka plan katmanının üzerine çıkar */
+            }
+
+            .side-image {
+                display: none; /* Mobilde yan resmi gizle */
             }
         }
 
