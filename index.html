@@ -273,17 +273,23 @@
         const sideImage = document.querySelector('.side-image');
 
         function changeImage() {
+            // Önce mevcut resmi dışarı kaydır
             sideImage.classList.add('slide-out');
             
+            // 1 saniye sonra yeni resmi yükle ve içeri kaydır
             setTimeout(() => {
                 currentImage = (currentImage + 1) % images.length;
                 sideImage.src = images[currentImage];
-                sideImage.classList.remove('slide-out');
-                sideImage.classList.add('slide-in');
                 
-                setTimeout(() => {
-                    sideImage.classList.remove('slide-in');
-                }, 1000);
+                // Yeni resmin yüklenmesini bekle
+                sideImage.onload = () => {
+                    sideImage.classList.remove('slide-out');
+                    sideImage.classList.add('slide-in');
+                    
+                    setTimeout(() => {
+                        sideImage.classList.remove('slide-in');
+                    }, 1000);
+                };
             }, 1000);
         }
 
