@@ -36,7 +36,7 @@
         .content {
             display: flex;
             flex-direction: column;
-            align-items: center;
+            align-items: flex-start;
             gap: 2rem;
             margin-bottom: 20px;
         }
@@ -62,24 +62,15 @@
 
         .video-title {
             margin: 0;
-            font-size: 28px;
+            font-size: 20px;
             font-weight: 700;
-            text-align: center;
+            font-style: italic;
+            text-align: left;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
             letter-spacing: 1px;
             position: relative;
             padding-bottom: 15px;
-        }
-
-        .video-title::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 3px;
-            background: linear-gradient(90deg, transparent, #FFFFFF, transparent);
+            padding-left: 20px;
         }
 
         @media (max-width: 768px) {
@@ -97,7 +88,7 @@
             }
 
             .video-title {
-                font-size: 22px;
+                font-size: 16px;
             }
 
             iframe {
@@ -112,13 +103,14 @@
             width: 50vw;
             height: 100vh;
             object-fit: contain;
+            object-position: center;
             background-color: #000000;
             border-radius: 0 10px 10px 0;
             box-shadow: 5px 0 15px rgba(0, 0, 0, 0.4);
             opacity: 0.9;
             transition: opacity 0.3s ease;
             display: none;
-            padding: 20px;
+            padding: 0;
         }
 
         @media (min-width: 1200px) {
@@ -133,6 +125,8 @@
 
         .subtitle-box {
             padding: 15px 30px;
+            text-align: left;
+            width: 100%;
         }
 
         .subtitle {
@@ -144,38 +138,33 @@
             position: relative;
             padding-bottom: 15px;
             text-decoration: none;
+            text-align: left;
         }
 
         .subtitle a {
             color: #FFFFFF;
             text-decoration: none;
             transition: opacity 0.3s ease;
+            font-style: italic;
         }
 
         .subtitle a:hover {
             opacity: 0.8;
         }
-
-        .subtitle::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 3px;
-            background: linear-gradient(90deg, transparent, #FFFFFF, transparent);
-        }
     </style>
 </head>
 <body>
-    <img src="https://image.milimaj.com/i/milliyet/75/0x0/602527de5542811458ea52f7.jpg" alt="Ramiz Dayı" class="side-image">
+    <img src="agirroman.jpg" alt="Ağır Roman" class="side-image">
     <div class="container">
         <div class="content">
-            <h1 class="video-title">Demirden korksak trene binmezdik</h1>
+            <h1 class="video-title">Savrulurken raconun kırmızı pelerini o zarif öfkeye<br>
+            Zaman ki sana hasta olmuş, incelikli haytasın<br>
+            Nüksederken raksına mahallenin maşallahı eyvallahı<br>
+            Güzelleş be oğlum, şimdilik ölümüne kadar hayattasın<br>
+            Şimdilik ölümüne kadar hayattasın.</h1>
         </div>
         <div class="subtitle-box">
-            <p class="subtitle">Racon FM'den günün önerisi: <a href="https://www.youtube.com/watch?v=9Tcy_V8jjf8&t=313s" target="_blank">Tıkla İzle</a></p>
+            <p class="subtitle">Racon FM'den günün önerisi: <a href="https://www.youtube.com/watch?v=Ci1YaPE3AQk&t=112s" target="_blank">Ağır Roman</a></p>
         </div>
     </div>
 </body>
