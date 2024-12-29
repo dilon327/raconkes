@@ -74,9 +74,17 @@
             border-radius: 0 10px 10px 0;
             box-shadow: 5px 0 15px rgba(0, 0, 0, 0.4);
             opacity: 0.9;
-            transition: opacity 0.3s ease;
+            transition: all 1s ease;
             display: none;
             padding: 0;
+        }
+
+        .fade-out {
+            opacity: 0;
+        }
+
+        .fade-in {
+            opacity: 0.9;
         }
 
         @media (min-width: 1200px) {
@@ -239,6 +247,37 @@
                 playButton.textContent = '▶';
             }
         }
+
+        // Resim listesi
+        const images = [
+            'agirroman.jpg',
+            'agirroman2.jpg',
+            'agirroman3.jpg',
+            'agirroman4.jpg',
+            'agirroman5.jpg',
+            'agirroman6.jpg'
+        ];
+
+        let currentImage = 0;
+        const sideImage = document.querySelector('.side-image');
+
+        function changeImage() {
+            sideImage.classList.add('fade-out');
+            
+            setTimeout(() => {
+                currentImage = (currentImage + 1) % images.length;
+                sideImage.src = images[currentImage];
+                sideImage.classList.remove('fade-out');
+                sideImage.classList.add('fade-in');
+                
+                setTimeout(() => {
+                    sideImage.classList.remove('fade-in');
+                }, 1000);
+            }, 1000);
+        }
+
+        // Her 10 saniyede bir resmi değiştir
+        setInterval(changeImage, 10000);
     </script>
 </body>
 </html>
