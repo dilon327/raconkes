@@ -137,17 +137,23 @@
             display: none; /* Müzik çaları gizle */
         }
 
-        .play-button {
+        .audio-controls {
             position: fixed;
             bottom: 20px;
             left: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            z-index: 1000;
+        }
+
+        .play-button, .control-button {
             padding: 10px 20px;
             background: rgba(255, 255, 255, 0.1);
             border: none;
             border-radius: 5px;
             color: #b3951d;
             cursor: pointer;
-            z-index: 1000;
             backdrop-filter: blur(10px);
             transition: background 0.3s ease;
             font-style: italic;
@@ -155,7 +161,13 @@
             font-weight: bold;
         }
 
-        .play-button:hover {
+        .control-button {
+            padding: 10px 15px;
+            font-size: 20px;
+            color: #b3951d;
+        }
+
+        .play-button:hover, .control-button:hover {
             background: rgba(255, 255, 255, 0.2);
         }
     </style>
@@ -164,9 +176,10 @@
     <audio class="hidden-player" loop>
         <source src="./agirroman.mp3" type="audio/mpeg">
     </audio>
-    <button class="play-button" onclick="document.querySelector('.hidden-player').play()">
-        Racon FM 🔉
-    </button>
+    <div class="audio-controls">
+        <div class="play-button">Racon FM 🔉</div>
+        <button class="control-button" onclick="togglePlay()">►</button>
+    </div>
     <img src="agirroman.jpg" alt="Ağır Roman" class="side-image">
     <div class="container">
         <div class="content">
@@ -181,10 +194,18 @@
         </div>
     </div>
     <script>
-        document.addEventListener('click', function() {
-            var audio = document.querySelector('.hidden-player');
-            audio.play();
-        }, { once: true });
+        const audio = document.querySelector('.hidden-player');
+        const playButton = document.querySelector('.control-button');
+
+        function togglePlay() {
+            if (audio.paused) {
+                audio.play();
+                playButton.textContent = '||';
+            } else {
+                audio.pause();
+                playButton.textContent = '▶';
+            }
+        }
     </script>
 </body>
 </html>
