@@ -15,7 +15,7 @@
             font-family: 'Roboto', sans-serif;
             min-height: 100vh;
             display: flex;
-            flex-direction: column;
+            justify-content: center;
             align-items: center;
         }
 
@@ -25,102 +25,17 @@
             padding: 2rem;
         }
 
-        .content, .subtitle-box {
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
-            padding: 2rem;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
-            backdrop-filter: blur(10px);
-            margin-right: 0;
-        }
-
-        .content {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            gap: 2rem;
-            margin-bottom: 20px;
-        }
-
-        .captain-shield {
-            width: 180px;
-            height: 180px;
-            filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.3));
-            transition: transform 0.3s ease;
-        }
-
-        .captain-shield:hover {
-            transform: scale(1.05);
-        }
-
-        iframe {
-            width: 100%;
-            max-width: 660px;
-            height: 370px;
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
-        }
-
-        .video-title {
-            margin: 0;
-            font-size: 20px;
-            font-weight: 700;
-            font-style: italic;
-            text-align: left;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-            letter-spacing: 1px;
-            position: relative;
-            padding-bottom: 15px;
-            padding-left: 20px;
-        }
-
         @media (max-width: 768px) {
-            body {
-                padding-top: 0;
-                display: flex;
-                flex-direction: column;
-            }
-
-            .side-image {
-                position: relative;
-                width: 100%;
-                height: 40vh;
-                border-radius: 0 0 10px 10px;
-                margin-bottom: 20px;
-            }
-
             .container {
-                order: 2;
-                margin-left: 0;
-                padding-top: 0;
-                width: 100%;
-                display: flex;
-                flex-direction: column;
-                gap: 20px;
+                padding: 1rem;
             }
-
+            
             .content {
                 padding: 1rem;
-                margin-bottom: 0;
-            }
-
-            .subtitle-box {
-                width: calc(100% - 2rem);
-                margin: 0 1rem;
-                padding: 1rem;
-            }
-
-            .captain-shield {
-                width: 140px;
-                height: 140px;
             }
 
             .video-title {
                 font-size: 16px;
-            }
-
-            iframe {
-                height: 300px;
             }
         }
 
@@ -137,32 +52,41 @@
             box-shadow: 5px 0 15px rgba(0, 0, 0, 0.4);
             opacity: 0.9;
             transition: opacity 0.3s ease;
-            display: block;
+            display: none;
             padding: 0;
         }
 
-        @media (min-width: 769px) and (max-width: 1199px) {
+        @media (min-width: 1200px) {
             .side-image {
-                width: 40vw;
+                display: block;
             }
             
-            .container {
-                margin-left: 40vw;
-            }
-        }
-
-        @media (min-width: 1200px) {
             .container {
                 margin-left: 50vw;
             }
         }
 
-        .subtitle-box {
-            padding: 15px 30px;
+        .content, .subtitle-box {
+            background: rgba(255, 255, 255, 0.1); /* Yarı saydam gri arka plan */
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+        }
+
+        .content {
+            margin-bottom: 20px; /* İki kutu arasında boşluk */
+        }
+
+        .video-title {
+            margin: 0;
+            font-size: 20px;
+            font-weight: 700;
+            font-style: italic;
             text-align: left;
-            width: calc(100% - 60px);
-            margin: 0 auto;
-            margin-left: 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            letter-spacing: 1px;
+            padding-left: 20px;
         }
 
         .subtitle {
@@ -171,8 +95,6 @@
             font-weight: 500;
             margin: 0;
             text-shadow: none;
-            position: relative;
-            padding-bottom: 15px;
             text-decoration: none;
             text-align: left;
         }
