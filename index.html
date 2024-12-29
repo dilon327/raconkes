@@ -110,15 +110,36 @@
             box-shadow: 5px 0 15px rgba(0, 0, 0, 0.4);
             opacity: 0.9;
             transition: opacity 0.3s ease;
-            display: none;
+            display: block;
             padding: 0;
         }
 
-        @media (min-width: 1200px) {
+        @media (max-width: 768px) {
             .side-image {
-                display: block;
+                position: relative;
+                width: 100%;
+                height: 40vh;
+                border-radius: 0 0 10px 10px;
+                margin-bottom: 20px;
+            }
+
+            .container {
+                margin-left: 0;
+                padding-top: 0;
+            }
+        }
+
+        @media (min-width: 769px) and (max-width: 1199px) {
+            .side-image {
+                width: 40vw;
             }
             
+            .container {
+                margin-left: 40vw;
+            }
+        }
+
+        @media (min-width: 1200px) {
             .container {
                 margin-left: 50vw;
             }
