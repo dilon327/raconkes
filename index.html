@@ -364,6 +364,7 @@
         
         let currentTrack = 0;
         let isFirstRound = true;
+        let timer; // Zamanlayıcıyı takip etmek için değişken ekliyoruz
 
         function playNext() {
             currentTrack = (currentTrack + 1) % playlist.length;
@@ -376,7 +377,7 @@
             audio.play();
             
             if (isFirstRound) {
-                setTimeout(() => {
+                timer = setTimeout(() => {
                     playNext();
                 }, 18000);
             }
@@ -388,13 +389,14 @@
             if (audio.paused) {
                 audio.play();
                 if (isFirstRound) {
-                    setTimeout(() => {
+                    timer = setTimeout(() => {
                         playNext();
                     }, 18000);
                 }
                 playButton.textContent = 'Racon FM 🔉 | Günün Listesi ||';
             } else {
                 audio.pause();
+                clearTimeout(timer); // Zamanlayıcıyı temizliyoruz
                 playButton.textContent = 'Racon FM 🔉 | Günün Listesi ►';
             }
         }
