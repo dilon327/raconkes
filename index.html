@@ -77,6 +77,17 @@
             transition: all 1s ease;
             display: none;
             padding: 0;
+            transform: translateX(0);
+        }
+
+        .slide-out {
+            transform: translateX(-100%);
+            opacity: 0;
+        }
+
+        .slide-in {
+            transform: translateX(0);
+            opacity: 0.9;
         }
 
         .fade-out {
@@ -262,16 +273,16 @@
         const sideImage = document.querySelector('.side-image');
 
         function changeImage() {
-            sideImage.classList.add('fade-out');
+            sideImage.classList.add('slide-out');
             
             setTimeout(() => {
                 currentImage = (currentImage + 1) % images.length;
                 sideImage.src = images[currentImage];
-                sideImage.classList.remove('fade-out');
-                sideImage.classList.add('fade-in');
+                sideImage.classList.remove('slide-out');
+                sideImage.classList.add('slide-in');
                 
                 setTimeout(() => {
-                    sideImage.classList.remove('fade-in');
+                    sideImage.classList.remove('slide-in');
                 }, 1000);
             }, 1000);
         }
