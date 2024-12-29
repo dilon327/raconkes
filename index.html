@@ -211,6 +211,77 @@
         .contact-info a:hover {
             opacity: 0.8;
         }
+
+        .archive-link {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
+            color: #b3951d;
+            text-decoration: none;
+            backdrop-filter: blur(10px);
+            transition: background 0.3s ease;
+            font-style: italic;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .hamburger-icon {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+        }
+
+        .hamburger-icon span {
+            display: block;
+            width: 15px;
+            height: 2px;
+            background-color: #b3951d;
+        }
+
+        .archive-link:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .menu-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        .menu-items {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 5px;
+            margin-top: 10px;
+            display: none;
+            flex-direction: column;
+            min-width: 150px;
+        }
+
+        .menu-items.active {
+            display: flex;
+        }
+
+        .menu-items a {
+            color: #b3951d;
+            text-decoration: none;
+            padding: 10px 20px;
+            transition: background 0.3s ease;
+            font-style: italic;
+        }
+
+        .menu-items a:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
     </style>
 </head>
 <body>
@@ -234,8 +305,18 @@
             <p class="subtitle">Günün Önerisi: <a href="https://www.imdb.com/title/tt0149601/" target="_blank">Ağır Roman</a></p>
         </div>
     </div>
-    <div class="contact-info">
-        İletişim: <a href="mailto:raconkardesligi@gmail.com">raconkardesligi@gmail.com</a>
+    <div class="menu-container">
+        <a href="#" class="archive-link" onclick="toggleMenu(event)">
+            <div class="hamburger-icon">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </a>
+        <div class="menu-items">
+            <a href="archive.html">Arşiv</a>
+            <a href="contact.html">İletişim</a>
+        </div>
     </div>
     <script>
         const audio = document.querySelector('.hidden-player');
@@ -320,6 +401,20 @@
 
         // Her 7 saniyede bir resmi değiştir
         setInterval(changeImage, 7000);
+
+        function toggleMenu(e) {
+            e.preventDefault();
+            document.querySelector('.menu-items').classList.toggle('active');
+        }
+
+        // Menü dışına tıklandığında menüyü kapat
+        document.addEventListener('click', function(e) {
+            const menu = document.querySelector('.menu-items');
+            const hamburger = document.querySelector('.archive-link');
+            if (!menu.contains(e.target) && !hamburger.contains(e.target)) {
+                menu.classList.remove('active');
+            }
+        });
     </script>
 </body>
 </html>

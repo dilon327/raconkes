@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Racon FM - Arşiv</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+        body {
+            margin: 0;
+            padding: 0;
+            background: #000000;
+            color: #FFFFFF;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .archive-container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+
+        .archive-item {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        .archive-date {
+            color: #b3951d;
+            font-style: italic;
+            margin-bottom: 10px;
+        }
+
+        .archive-content {
+            margin-bottom: 15px;
+        }
+
+        .archive-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .archive-links a {
+            color: #b3951d;
+            text-decoration: none;
+        }
+
+        .archive-links a:hover {
+            text-decoration: underline;
+        }
+
+        .back-to-home {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
+            color: #b3951d;
+            text-decoration: none;
+            backdrop-filter: blur(10px);
+            transition: background 0.3s ease;
+        }
+
+        .back-to-home:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="back-to-home">← Ana Sayfa</a>
+    <div class="archive-container">
+        <div class="archive-item">
+            <div class="archive-date">29 Aralık 2024 - Ağır Roman</div>
+            <div class="archive-content">
+                <p>Savrulurken raconun kırmızı pelerini o zarif öfkeye<br>
+                Zaman ki sana hasta olmuş, incelikli haytasın<br>
+                Nüksederken raksına mahallenin maşallahı eyvallahı<br>
+                Güzelleş be oğlum, şimdilik ölümüne kadar hayattasın<br>
+                Şimdilik ölümüne kadar hayattasın.</p>
+            </div>
+            <div class="archive-links">
+                <a href="https://www.imdb.com/title/tt0149601/" target="_blank">Film</a>
+                <a href="https://www.youtube.com/watch?v=TCwSL0LeWGM&list=PLYyM5bxy4waUPTDG_szx6On6t97bwYos8" target="_blank">Müzik</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html> 
