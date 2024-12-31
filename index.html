@@ -48,6 +48,7 @@
 
         @media (max-width: 768px) {
             body {
+                background: #000000;
                 position: relative;
             }
 
@@ -69,6 +70,8 @@
                 flex-direction: column;
                 align-items: center;
                 text-align: center;
+                justify-content: center;
+                min-height: 100vh;
             }
 
             .video-title, .subtitle {
@@ -78,6 +81,11 @@
 
             .side-image {
                 display: none;
+            }
+
+            .centered-image {
+                max-width: 90%;
+                margin: 0 auto;
             }
         }
 
@@ -347,7 +355,7 @@
             text-align: center;
             margin-top: -4px;
             margin-bottom: -10px;
-            font-size: 32px;
+            font-size: 14px;
             font-style: italic;
         }
 
@@ -513,6 +521,3 @@
     </script>
 </body>
 </html>
-git add
-git commit -m "Add all changes including Die Hard image"
-git push
