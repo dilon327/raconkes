@@ -16,13 +16,34 @@
             min-height: 100vh;
             display: flex;
             justify-content: center;
-            align-items: center;
+            align-items: flex-start;
         }
 
         .container {
             width: 100%;
-            max-width: 800px;
+            max-width: 1000px;
             padding: 2rem;
+            margin-top: 0;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        .content {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .centered-image {
+            display: block;
+            max-width: 100%;
+            height: auto;
+            margin: 0 auto;
+            border-radius: 10px;
         }
 
         @media (max-width: 768px) {
@@ -103,12 +124,12 @@
             }
             
             .container {
-                margin-left: 50vw;
+                margin: 0 auto;
             }
         }
 
         .content, .subtitle-box {
-            background: rgba(255, 255, 255, 0.1); /* Yarı saydam gri arka plan */
+            background: rgba(255, 255, 255, 0.1);
             border-radius: 20px;
             padding: 2rem;
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
@@ -116,7 +137,7 @@
         }
 
         .content {
-            margin-bottom: 20px; /* İki kutu arasında boşluk */
+            margin-bottom: 20px;
         }
 
         .video-title {
@@ -152,7 +173,7 @@
         }
 
         .hidden-player {
-            display: none; /* Müzik çaları gizle */
+            display: none;
         }
 
         .audio-controls {
@@ -182,8 +203,8 @@
 
         .control-button {
             padding: 10px 15px;
-            font-size: 20px;
-            color: #b3951d;
+            font-size: 18px;
+            color: #FFFFFF;
             display: flex;
             align-items: center;
             gap: 10px;
@@ -194,6 +215,7 @@
             transition: background 0.3s ease;
             cursor: pointer;
             text-decoration: none;
+            width: fit-content;
         }
 
         .control-button:hover {
@@ -310,29 +332,54 @@
         }
 
         .control-button.list-link {
-            font-size: 10px; /* 12px'den 10px'e düşürdük */
+            font-size: 10px;
+            color: #FFFFFF;
+        }
+
+        .control-button span {
+            cursor: pointer;
+            padding: 0 5px;
+            font-size: 20px;
+        }
+
+        .text-box {
+            width: 100%;
+            max-width: 1000px;
+            color: #FFFFFF;
+            text-align: center;
+            margin-top: -4px;
+            margin-bottom: -10px;
+            font-size: 32px;
+            font-style: italic;
+        }
+
+        .control-button span span {
+            cursor: pointer;
+            padding-left: 5px;
+        }
+
+        .control-button span {
+            cursor: default;
         }
     </style>
 </head>
 <body>
-    <audio class="hidden-player" onended="playNext()">
-        <source src="./agirroman.mp3" type="audio/mpeg">
+    <audio class="hidden-player">
+        <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" 
+            src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/328874192&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true">
+        </iframe>
     </audio>
     <div class="audio-controls">
-        <button class="control-button" onclick="togglePlay()">Racon FM 🔉 | Günün Listesi ►</button>
-        <a href="https://www.youtube.com/playlist?list=PLYyM5bxy4waUPTDG_szx6On6t97bwYos8" target="_blank" class="control-button list-link">Tamamı için</a>
+        <div class="control-button">
+            <span>Racon FM 🔉 | Günün Listesi <span onclick="toggleSoundCloud()">►</span></span>
+        </div>
     </div>
-    <img src="agirroman.jpg" alt="Ağır Roman" class="side-image">
     <div class="container">
         <div class="content">
-            <h1 class="video-title">Savrulurken raconun kırmızı pelerini o zarif öfkeye<br>
-            Zaman ki sana hasta olmuş, incelikli haytasın<br>
-            Nüksederken raksına mahallenin maşallahı eyvallahı<br>
-            Güzelleş be oğlum, şimdilik ölümüne kadar hayattasın<br>
-            Şimdilik ölümüne kadar hayattasın.</h1>
-        </div>
-        <div class="subtitle-box">
-            <p class="subtitle">Günün Önerisi: <a href="https://www.imdb.com/title/tt0149601/" target="_blank">Ağır Roman</a></p>
+            <img src="diehard.png" alt="Die Hard Movie" class="centered-image">
+            <div class="text-box">
+                Racon Kes ailesi mutlu yıllar diler 🎄
+            </div>
         </div>
     </div>
     <div class="menu-container">
@@ -349,8 +396,24 @@
         </div>
     </div>
     <script>
+        const soundCloudPlayer = document.querySelector('.hidden-player iframe');
+        let isPlaying = false;
+        
+        function toggleSoundCloud() {
+            const playButton = document.querySelector('.control-button span span');
+            if (!isPlaying) {
+                soundCloudPlayer.src = soundCloudPlayer.src.replace('auto_play=false', 'auto_play=true');
+                playButton.textContent = '||';
+                isPlaying = true;
+            } else {
+                soundCloudPlayer.src = soundCloudPlayer.src.replace('auto_play=true', 'auto_play=false');
+                playButton.textContent = '►';
+                isPlaying = false;
+            }
+        }
+
         const audio = document.querySelector('.hidden-player');
-        const playButton = document.querySelector('.control-button');
+        const playButton = document.querySelector('#playButton');
         
         const playlist = [
             './agirroman.mp3',
@@ -364,9 +427,10 @@
         
         let currentTrack = 0;
         let isFirstRound = true;
-        let timer; // Zamanlayıcıyı takip etmek için değişken ekliyoruz
+        let timer;
 
         function playNext() {
+            clearTimeout(timer);
             currentTrack = (currentTrack + 1) % playlist.length;
             
             if (currentTrack === 0) {
@@ -393,15 +457,14 @@
                         playNext();
                     }, 18000);
                 }
-                playButton.textContent = 'Racon FM 🔉 | Günün Listesi ||';
+                playButton.textContent = '||';
             } else {
                 audio.pause();
-                clearTimeout(timer); // Zamanlayıcıyı temizliyoruz
-                playButton.textContent = 'Racon FM 🔉 | Günün Listesi ►';
+                clearTimeout(timer);
+                playButton.textContent = '►';
             }
         }
 
-        // Resim listesi
         const images = [
             'agirroman.jpg',
             'agirroman2.jpg',
@@ -414,15 +477,12 @@
         const sideImage = document.querySelector('.side-image');
 
         function changeImage() {
-            // Önce mevcut resmi soldur
             sideImage.classList.add('fade-out');
             
-            // 1 saniye sonra yeni resmi yükle ve belirginleştir
             setTimeout(() => {
                 currentImage = (currentImage + 1) % images.length;
                 sideImage.src = images[currentImage];
                 
-                // Yeni resmin yüklenmesini bekle
                 sideImage.onload = () => {
                     sideImage.classList.remove('fade-out');
                     sideImage.classList.add('fade-in');
@@ -434,7 +494,6 @@
             }, 1000);
         }
 
-        // Her 7 saniyede bir resmi değiştir
         setInterval(changeImage, 7000);
 
         function toggleMenu(e) {
@@ -442,7 +501,6 @@
             document.querySelector('.menu-items').classList.toggle('active');
         }
 
-        // Menü dışına tıklandığında menüyü kapat
         document.addEventListener('click', function(e) {
             const menu = document.querySelector('.menu-items');
             const hamburger = document.querySelector('.archive-link');
@@ -450,6 +508,10 @@
                 menu.classList.remove('active');
             }
         });
+
+        function openPlaylist() {
+            window.open('https://soundcloud.com/search?q=christmas%20songs&query_urn=soundcloud%3Asearch-autocomplete%3Aea0317af62ad40c6a50256f8e7cf02f5', '_blank');
+        }
     </script>
 </body>
 </html>
