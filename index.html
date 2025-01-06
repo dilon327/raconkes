@@ -15,34 +15,28 @@
             font-family: 'Roboto', sans-serif;
             min-height: 100vh;
             display: flex;
-            justify-content: center;
-            align-items: flex-start;
-        }
-
-        .container {
-            width: 100%;
-            max-width: 1000px;
-            padding: 2rem;
-            margin-top: 0;
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;
+            align-items: center;
         }
 
         .content {
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            gap: 20px;
+            width: 60%;
+            padding-left: 20px;
+        }
+
+        .right-container {
+            width: 30%;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 32px;
+            margin-right: 20px;
+            border-radius: 10px;
+            min-height: 300px;
         }
 
         .centered-image {
             display: block;
-            max-width: 100%;
+            max-width: 110%;
             height: auto;
-            margin: 0 auto;
+            margin: 0 20px 0 190px;
             border-radius: 10px;
         }
 
@@ -371,25 +365,61 @@
                 font-size: 14px;
             }
         }
+
+        .container {
+            width: 60%;
+            padding: 32px;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                position: relative;
+                z-index: 2;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                padding-top: 60px;
+            }
+        }
+
+        .audio-controls, .menu-container {
+            position: fixed;
+            z-index: 1000;
+        }
+
+        .quote {
+            color: #FFFFFF;
+            font-style: italic;
+            font-size: 32px;
+            margin-left: 30px;
+            max-width: 400px;
+            white-space: nowrap;
+        }
     </style>
 </head>
 <body>
     <div class="hidden-player">
         <iframe id="soundcloud-player" width="0" height="0" scrolling="no" frameborder="no" allow="autoplay" 
-            src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/328874192&color=%23ff5500&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false">
+            src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/266793365&color=%23ff5500&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false">
         </iframe>
     </div>
+
+    <div style="display: flex; align-items: center;">
+        <img src="kabadayi2.jfif" alt="Kabadayı" class="centered-image">
+        <p class="quote">
+            Bizler,<br>
+            Eceliyle yatağında ölmeye karar verenler,<br>
+            Kurşunla göç edenlerin şerefine içiyoruz.
+        </p>
+    </div>
+
     <div class="audio-controls">
         <div class="control-button">
             <span>Racon FM 🔉 | Günün Listesi <span onclick="toggleSoundCloud()">►</span></span>
-        </div>
-    </div>
-    <div class="container">
-        <div class="content">
-            <img src="diehard.png" alt="Die Hard Movie" class="centered-image">
-            <div class="text-box">
-                Racon Kes ailesi mutlu yıllar diler 🎄
-            </div>
         </div>
     </div>
     <div class="menu-container">
