@@ -19,14 +19,14 @@
         }
 
         .content {
-            width: 60%;
-            padding-left: 20px;
+            width: 30%;
+            padding-left: 1000px;
         }
 
         .right-container {
             width: 30%;
             background: rgba(255, 255, 255, 0.1);
-            padding: 32px;
+            padding: 100px;
             margin-right: 20px;
             border-radius: 10px;
             min-height: 300px;
@@ -34,9 +34,9 @@
 
         .centered-image {
             display: block;
-            max-width: 110%;
+            max-width: 35%;
             height: auto;
-            margin: 0 20px 0 190px;
+            margin: 0px 100px 0 80px;
             border-radius: 10px;
         }
 
@@ -180,7 +180,11 @@
         }
 
         .hidden-player {
-            display: none;
+            display: none;  /* Hide player by default */
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
         }
 
         .audio-controls {
@@ -402,24 +406,26 @@
     </style>
 </head>
 <body>
-    <div class="hidden-player">
-        <iframe id="soundcloud-player" width="0" height="0" scrolling="no" frameborder="no" allow="autoplay" 
-            src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/266793365&color=%23ff5500&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false">
-        </iframe>
-    </div>
-
     <div style="display: flex; align-items: center;">
-        <img src="kabadayi2.jfif" alt="Kabadayı" class="centered-image">
+        <img src="eskiya.jpg" alt="eskiya" class="centered-image">
         <p class="quote">
-            Bizler,<br>
-            Eceliyle yatağında ölmeye karar verenler,<br>
-            Kurşunla göç edenlerin şerefine içiyoruz.
+            Hastalandım,<br>
+            Bir ciğerimi orada bıraktım, gene ölmedim.<br>
+            Çok dövdüler beni.<br>
+            Kan kustum ama ölmedim.<br>
+            Yaşadım.<br>
+            Seni bir kez daha görebilmek için yaşadım.<br>
+            Şimdi bana dediler ki kimse sesini duymuyormuş.<br>
+            Susmuşsun.<br>
+            Benimle de konuşmayacak mısın, Keje?
+
+
         </p>
     </div>
 
     <div class="audio-controls">
         <div class="control-button">
-            <span>Racon FM 🔉 | Günün Listesi <span onclick="toggleSoundCloud()">►</span></span>
+            <span onclick="openPlaylist()">Racon FM 🔉 | Günün Listesi ►</span>
         </div>
     </div>
     <div class="menu-container">
@@ -435,84 +441,15 @@
             <a href="contact.html">İletişim</a>
         </div>
     </div>
-    <!-- SoundCloud Widget API -->
-    <script src="https://w.soundcloud.com/player/api.js"></script>
     <script>
-        let player;
-        let isPlaying = false;
-
-        window.onload = function() {
-            player = SC.Widget('soundcloud-player');
-            player.bind(SC.Widget.Events.READY, function() {
-                console.log('Player is ready');
-            });
+        // Ensure playButton click handler is properly linked to YouTube
+        function openPlaylist() {
+            console.log('Opening YouTube playlist...'); // Debug log
+            window.open('https://www.youtube.com/watch?v=76seyGAetDs&list=PLOP8MwvFE7nOYyHxuY7YMB1pQzbQVp1wB', '_blank');
         }
 
-        function toggleSoundCloud() {
-            const playButton = document.querySelector('.control-button span span');
-            if (!isPlaying) {
-                player.play();
-                playButton.textContent = '||';
-                isPlaying = true;
-            } else {
-                player.pause();
-                playButton.textContent = '►';
-                isPlaying = false;
-            }
-        }
-
-        const audio = document.querySelector('.hidden-player');
-        const playButton = document.querySelector('#playButton');
-        
-        const playlist = [
-            './agirroman.mp3',
-            './aglasevdam.mp3',
-            './kolera.mp3',
-            './pumazehra.mp3',
-            './resimdekigozyaslari.mp3',
-            './sabah.mp3',
-            './tilkiorhan.mp3',
-        ];
-        
-        let currentTrack = 0;
-        let isFirstRound = true;
-        let timer;
-
-        function playNext() {
-            clearTimeout(timer);
-            currentTrack = (currentTrack + 1) % playlist.length;
-            
-            if (currentTrack === 0) {
-                isFirstRound = false;
-            }
-
-            audio.src = playlist[currentTrack];
-            audio.play();
-            
-            if (isFirstRound) {
-                timer = setTimeout(() => {
-                    playNext();
-                }, 18000);
-            }
-            
-            playButton.textContent = 'Racon FM 🔉 | Günün Listesi ||';
-        }
-
-        function togglePlay() {
-            if (audio.paused) {
-                audio.play();
-                if (isFirstRound) {
-                    timer = setTimeout(() => {
-                        playNext();
-                    }, 18000);
-                }
-                playButton.textContent = '||';
-            } else {
-                audio.pause();
-                clearTimeout(timer);
-                playButton.textContent = '►';
-            }
-        }
+        // Remove any SoundCloud-related JavaScript
+        // Remove or update audio player controls if present
 
         const images = [
             'agirroman.jpg',
@@ -557,10 +494,6 @@
                 menu.classList.remove('active');
             }
         });
-
-        function openPlaylist() {
-            window.open('https://soundcloud.com/search?q=christmas%20songs&query_urn=soundcloud%3Asearch-autocomplete%3Aea0317af62ad40c6a50256f8e7cf02f5', '_blank');
-        }
     </script>
 </body>
 </html>
